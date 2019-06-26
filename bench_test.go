@@ -88,6 +88,14 @@ func BenchmarkUnmarshalStandard(b *testing.B) {
 	}
 }
 
+func BenchmarkUnmarshalStandardWithEasy(b *testing.B) {
+	request := easyjson.BidRequest{}
+
+	for i := 0; i < b.N; i++ {
+		json.Unmarshal(body, &request)
+	}
+}
+
 func BenchmarkUnmarshalEasyJson(b *testing.B) {
 	request := easyjson.BidRequest{}
 
@@ -115,6 +123,12 @@ func BenchmarkUnmarshalJsonIteratorWithEasy(b *testing.B) {
 func BenchmarkMarshalStandard(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		json.Marshal(normalRequest)
+	}
+}
+
+func BenchmarkMarshalStandardWithEasy(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		json.Marshal(easyjsonRequest)
 	}
 }
 
