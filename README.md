@@ -2,22 +2,20 @@ Benchmarking [json-iterator](https://github.com/json-iterator/go) vs [easyjson](
 ---
 
 ```
-$ go test -v -bench . -benchmem
-=== RUN   TestRawMessageToInt
---- PASS: TestRawMessageToInt (0.00s)
-=== RUN   TestUnmarshal
---- PASS: TestUnmarshal (0.00s)
+$ go test -bench . -benchmem
 goos: darwin
 goarch: amd64
 pkg: github.com/erikdubbelboer/json-iterator-benchmark
-BenchmarkUnmarshalStandard-16        100000	   14652 ns/op	 2096 B/op	   43 allocs/op
-BenchmarkUnmarshalEasyJson-16        200000	    6140 ns/op	 1808 B/op	   38 allocs/op
-BenchmarkUnmarshalJsonIterator-16    200000	   11588 ns/op	 4106 B/op	  112 allocs/op
-BenchmarkMarshalStandard-16          100000	   12305 ns/op	 3545 B/op	   21 allocs/op
-BenchmarkMarshalEasyJson-16          500000	    3425 ns/op	 1916 B/op	   14 allocs/op
-BenchmarkMarshalJsonIterator-16      100000	   12578 ns/op	 4703 B/op	   22 allocs/op
+BenchmarkUnmarshalStandard-16                	  100000	     20896 ns/op	    1616 B/op	      43 allocs/op
+BenchmarkUnmarshalEasyJson-16                	  200000	      6032 ns/op	    1808 B/op	      38 allocs/op
+BenchmarkUnmarshalJsonIterator-16            	  200000	      7547 ns/op	    2721 B/op	     113 allocs/op
+BenchmarkUnmarshalJsonIteratorWithEasy-16    	  200000	     11054 ns/op	    4106 B/op	     112 allocs/op
+BenchmarkMarshalStandard-16                  	  200000	      8057 ns/op	    2543 B/op	      31 allocs/op
+BenchmarkMarshalEasyJson-16                  	  500000	      3245 ns/op	    1916 B/op	      14 allocs/op
+BenchmarkMarshalJsonIterator-16              	  200000	      7223 ns/op	    2227 B/op	      25 allocs/op
+BenchmarkMarshalJsonIteratorWithEasy-16      	  200000	     12021 ns/op	    4706 B/op	      22 allocs/op
 PASS
-ok  	github.com/erikdubbelboer/json-iterator-benchmark	9.849s
+ok  	github.com/erikdubbelboer/json-iterator-benchmark	14.920s
 ```
 
 Seems like for the case of encoding or decoding OpenRTB easyjson is much faster.
